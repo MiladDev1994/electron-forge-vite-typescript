@@ -1,3 +1,4 @@
+import path from "path";
 import type { ForgeConfig } from '@electron-forge/shared-types';
 import { MakerSquirrel } from '@electron-forge/maker-squirrel';
 import { MakerZIP } from '@electron-forge/maker-zip';
@@ -13,9 +14,23 @@ const config: ForgeConfig = {
     extraResource: [
       "./resources/worker"
     ],
+    icon: path.join(__dirname, "src", "assets", "icon"),
   },
   rebuildConfig: {},
-  makers: [new MakerSquirrel({}), new MakerZIP({}, ['darwin']), new MakerRpm({}), new MakerDeb({})],
+  makers: [
+    new MakerSquirrel({}), 
+    new MakerZIP({}, ['darwin']), 
+    new MakerRpm({
+      options: {
+        icon: path.join(__dirname, "src", "assets", "icon.png")
+      }
+    }), 
+    new MakerDeb({
+      options: {
+        icon: path.join(__dirname, "src", "assets", "icon.png")
+      }
+    })
+  ],
   plugins: [
     new VitePlugin({
       // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
@@ -23,12 +38,12 @@ const config: ForgeConfig = {
       build: [
         {
           // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
-          entry: 'src/main.ts',
+          entry: 'src/main/main.ts',
           config: 'vite.main.config.mts',
           target: 'main',
         },
         {
-          entry: 'src/preload.ts',
+          entry: 'src/main/preload.ts',
           config: 'vite.preload.config.mts',
           target: 'preload',
         },

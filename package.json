@@ -1,6 +1,6 @@
 {
-  "name": "electron-vite",
-  "productName": "electron-vite",
+  "name": "electron-forge-vite-tailwind-typescript-template",
+  "productName": "electron-forge-vite-tailwind-typescript-template",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/main.js",
@@ -9,11 +9,12 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "git": "tsx ./scripts/generateIconsType.ts"
   },
   "keywords": [],
   "author": {
-    "name": "milad goli",
+    "name": "milad golinezhad",
     "email": "miladgolinezhad73@gmail.com"
   },
   "license": "MIT",
@@ -40,6 +41,8 @@
     "eslint-plugin-import": "^2.32.0",
     "postcss": "^8.5.6",
     "sass": "^1.92.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "~4.5.4",
     "vite": "^5.4.19",
     "vite-plugin-svgr": "^4.5.0"
@@ -47,6 +50,8 @@
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.3",
+    "tailwind-merge": "^3.3.1"
   }
 }
